@@ -134,6 +134,20 @@ $longopts  = array(
     "term::",
     "location::",
 );
+
+$prefacetext = array("Have you considered: ",
+                     "Are you interested in: ",
+                     "Want to check out: ",
+                     "Try: ",
+                     "You should hit up: ",
+                     "Are you bored enough to go to: ",
+                     "What about: ",
+                     "Have you thought of: ",
+                     "Ever been to: ",
+                     "Consider: "
+);
+
+echo $prefacetext[random(0, $prefacetext.count()-1)]
     
 $options = getopt("", $longopts);
 $term = $options['term'] ?: '';
