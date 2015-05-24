@@ -6,10 +6,14 @@ body {
 	font-weight: normal;
 }
 
+h1 {
+	font-size: 24pt;
+}
+
 #preface {
 	display: inline-block;
 	vertical-align: text-bottom;
-	padding-right: 10px;
+	padding: 15px;
 	font-size: 20pt;
 	font-weight: bold;
 	float: left;
@@ -33,11 +37,12 @@ a {
 
 #wit {
 	margin-left: 10px;
-	font-size: 18pt;
+	font-size: 17pt;
 	display: inline-block;
 	text-decoration: underline;
 	float: left;
 	vertical-align: text-bottom;
+	padding: 18px;
 
 }
 
@@ -75,10 +80,12 @@ h1 {
 
 #option{
 	margin-top: 10px;
-	width: 41%;
 	margin-left: auto;
 	margin-right: auto;
+}
 
+#option h3 {
+	text-align: center;
 }
 
 form {
