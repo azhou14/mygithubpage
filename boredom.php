@@ -192,7 +192,7 @@ $rate = rating($rating);
   <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="chrome=1">
-    <title>Coday15team2 by malna1r</title>
+    <title>Bored Today</title>
 
     <link rel="stylesheet" href="bored.css">
     <script src="https://maps.googleapis.com/maps/api/js"></script>
