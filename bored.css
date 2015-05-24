@@ -1,15 +1,23 @@
 body {
 	font-family: Helvetica, sans-serif;
 	font-size: 13pt;
-	background-color: white;
+	background-image: url("https://webster.cs.washington.edu/students/dianaw14/boredtoday/thinking.png");
+	background-repeat: no-repeat;
+	background-position: 90% 0;
+	background-size: 13%;
+	max-height: 100%;
 	color: gray;
 	font-weight: normal;
+}
+
+h1 {
+	font-size: 24pt;
 }
 
 #preface {
 	display: inline-block;
 	vertical-align: text-bottom;
-	padding-right: 10px;
+	padding: 15px;
 	font-size: 20pt;
 	font-weight: bold;
 	float: left;
@@ -33,11 +41,12 @@ a {
 
 #wit {
 	margin-left: 10px;
-	font-size: 18pt;
+	font-size: 17pt;
 	display: inline-block;
 	text-decoration: underline;
 	float: left;
 	vertical-align: text-bottom;
+	padding: 18px;
 
 }
 
@@ -61,10 +70,6 @@ a {
 	clear: both;
 }
 
-body {
-	background-image: url(<?php echo $img;?>); 
-}
-
 h1 {
 	text-align: center;
 }
@@ -75,12 +80,18 @@ h1 {
 
 #option{
 	margin-top: 10px;
-	width: 41%;
 	margin-left: auto;
 	margin-right: auto;
+	margin-bottom: 20px;
+}
 
+#option h3 {
+	text-align: center;
+	font-size: 18pt;
+	margin-bottom: 10px;
 }
 
 form {
 	text-align: center;
+	font-size: 15pt;
 }
