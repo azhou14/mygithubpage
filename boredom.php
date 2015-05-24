@@ -12,7 +12,7 @@
   
   </head>
   <body>
-    <h1>Bored Today? Here's Somewhere For You To Go</h1>
+    <h1 align="center">Bored Today? Here's Somewhere For You To Go</h1>
 
 <?php
 /**
