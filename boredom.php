@@ -132,7 +132,7 @@ function query_api($term, $location) {
     $urlPg = $json->url;
     $address = $name.",".$city.",".$statecode;
     $address = urlencode($address);
-    $url = "https://www.google.com/maps/embed/v1/place?q=".$address."&key=AIzaSyDunxkbh0Nr7LiIhQ7aDdxGH-EZWDzLaS8&maptype=satellite&zoom=17";   
+    $url = "https://www.google.com/maps/embed/v1/place?q=".$address."&key=AIzaSyDunxkbh0Nr7LiIhQ7aDdxGH-EZWDzLaS8&zoom=17";   
     return array($name, $img, $url, $rating, $urlPg);
 }
 /**
@@ -142,7 +142,6 @@ $longopts  = array(
     "term::",
     "location::",
 );
-
 $prefacetext = array("Have you considered: ",
                      "Are you interested in: ",
                      "Want to check out: ",
@@ -154,8 +153,6 @@ $prefacetext = array("Have you considered: ",
                      "Ever been to: ",
                      "Consider: "
 );
-
-
 function rating($rating) {
 if($rating == 5) {
     return "People on Yelp think it's incredible";
@@ -181,8 +178,6 @@ if($rating == 5) {
     return "Don't go here. I didn't even think it was possible to for something to be rated this low on Yelp";
 }
 }
-
-
 $num = mt_rand(0, count($prefacetext) - 1);
     
 $options = getopt("", $longopts);
@@ -197,7 +192,7 @@ $rate = rating($rating);
   <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="chrome=1">
-    <title>Coday15team2 by malna1r</title>
+    <title>Bored Today</title>
 
     <link rel="stylesheet" href="bored.css">
     <script src="https://maps.googleapis.com/maps/api/js"></script>
@@ -206,9 +201,9 @@ $rate = rating($rating);
   
   </head>
   <body>
-    <h1>Bored Today? </h1>
-       
-        <h2 id="preface"><?= $prefacetext[$num]?></h2>
+    
+    <h1>Bored Today? </h1>   
+        <div id="preface"><?= $prefacetext[$num]?></div>
         <div id="name"><p><a href="<?=$urlPg?>"><?= $name ?></a></p></div>
         <div id="wit"><?= $rate ?></div>
         <div id="info"></div>
