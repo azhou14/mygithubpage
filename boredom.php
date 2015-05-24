@@ -140,6 +140,12 @@ function query_api($term, $location) {
     $img = $json->image_url;
     $location = json_decode(json_encode($location, true));
     $add = $location->display_address;
+    
+    //Deals with the awkward "the" grammar issue
+    $locationwords = explode(" ", name);
+    if(strcmp("the", strtolower($locationwords[0])) !== 0) {
+      //concatenate "the" to the end of the preface phrase
+    } 
 
     foreach ($add as $ad) {
         if(is_null($address)) {
