@@ -1,3 +1,19 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="chrome=1">
+    <title>Bored Today</title>
+
+    <link rel="stylesheet" href="boredtoday.css">
+    <script src="https://maps.googleapis.com/maps/api/js"></script>
+    <script src="boredtoday.js" type="text/javascript"></script>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+  
+  </head>
+  <body>
+    <h1>Bored Today? Here's Somewhere For You To Go</h1>
+
 <?php
 /**
  * Yelp API v2.0 code sample.
@@ -32,6 +48,8 @@ $DEFAULT_LOCATION = substr($country, strpos($country, "City")+6, strpos($country
 $SEARCH_LIMIT = 20;
 $SEARCH_PATH = '/v2/search/';
 $BUSINESS_PATH = '/v2/business/';
+$url = "";
+$img = "";
 /** 
  * Makes a request to the Yelp API and returns the response
  * 
@@ -119,13 +137,29 @@ function query_api($term, $location) {
     $name = $json->name;
     $rating = $json->rating;
     $location = $json->location;
-    foreach ($location as $thing) { ?>
-        <p><?= $thing ?></p>
-    <?php } ?>
-        <p><?= $name ?></p>
-    <?php
+    $img = $json->image_url;
+    $location = json_decode(json_encode($location, true));
+    $add = $location->display_address;
+
+    foreach ($add as $ad) {
+        if(is_null($address)) {
+            $address = $ad;
+        }else {
+        $address = $address."'%2C%'".$ad;
+        }
+    }
+    $address = str_replace(" ", '%20', $address);
     
-    
+    $url = "https://www.google.com/maps/embed/v1/place?q=".$address."&key=AIzaSyDunxkbh0Nr7LiIhQ7aDdxGH-EZWDzLaS8";
+    ?>
+
+<iframe width="600" height="450" frameborder="0" style="border:0" src=<?=$url?>></iframe>
+
+        <div id="business">
+            <h2><?= $name ?></h2>
+            <img src=<?= $img ?>>
+        </div>
+<?php
 }
 /**
  * User input is handled here 
@@ -134,70 +168,11 @@ $longopts  = array(
     "term::",
     "location::",
 );
-
-//preface text
-$prefacetext = array("Have you considered: ",
-                     "Are you interested in: ",
-                     "Want to check out: ",
-                     "Try: ",
-                     "You should hit up: ",
-                     "Are you bored enough to go to: ",
-                     "What about: ",
-                     "Have you thought of: ",
-                     "Ever been to: ",
-                     "Consider: "
-);
-
-echo $prefacetext[random(0, $prefacetext.count()-1)];
-
-//rating if statements code snippet (probably a more elegant way to write this)
-if($rating == 5) {
-    return "People on Yelp think it's incredible";
-} elseif($rating >= 4.5 && $rating < 5) {
-    return "It's great";
-} elseif($rating >=4 && $rating < 4.5) {
-    return "It's pretty sweet";
-} elseif($rating >=3.5 && $rating < 4) {
-    return "It wouldn't be a bad option";
-} elseif($rating >= 3 && $rating < 3.5) {
-    return "It's alright";
-} elseif($rating >= 2.5 && $rating < 3) {
-    return "Though you could probably do better";
-} elseif($rating >= 2 && $rating < 2.5) {
-    return "It's not great though";
-} elseif($rating >= 1.5 && $rating < 2) {
-    return "Though you might want to look again";
-} elseif($rating >= 1 && $rating < 1.5) {
-    return "Though it might be an actively unenjoyable experience";
-} elseif($rating >= .5 && $rating < 1) {
-    return "Though, honestly, if Yelp is to be believed, this place sucks";
-} else {
-    return "Don't go here. I didn't even think it was possible to for something to be rated this low on Yelp";
-}
-
+    
 $options = getopt("", $longopts);
 $term = $options['term'] ?: '';
 $location = $options['location'] ?: '';
 query_api($term, $location);
 ?>
-
-<!DOCTYPE html>
-<html>
-  <head>
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="chrome=1">
-    <title>Coday15team2 by malna1r</title>
-
-    <link rel="stylesheet" href="boredtoday.css">
-    <script src="https://maps.googleapis.com/maps/api/js"></script>
-    <script src="boredtoday.js" type="text/javascript"></script>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
-  
-  </head>
-  <body>
-    <h1>Bored Today? Search for Something to Do</h1>
-    <div id="map-canvas"></div>
   </body>
 </html>
-
-
