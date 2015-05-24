@@ -135,6 +135,7 @@ $longopts  = array(
     "location::",
 );
 
+//preface text
 $prefacetext = array("Have you considered: ",
                      "Are you interested in: ",
                      "Want to check out: ",
@@ -147,8 +148,33 @@ $prefacetext = array("Have you considered: ",
                      "Consider: "
 );
 
-echo $prefacetext[random(0, $prefacetext.count()-1)]
-    
+echo $prefacetext[random(0, $prefacetext.count()-1)];
+
+//rating if statements code snippet (probably a more elegant way to write this)
+if($rating == 5) {
+    return "People on Yelp think it's incredible";
+} elseif($rating >= 4.5 && $rating < 5) {
+    return "It's great";
+} elseif($rating >=4 && $rating < 4.5) {
+    return "It's pretty sweet";
+} elseif($rating >=3.5 && $rating < 4) {
+    return "It wouldn't be a bad option";
+} elseif($rating >= 3 && $rating < 3.5) {
+    return "It's alright";
+} elseif($rating >= 2.5 && $rating < 3) {
+    return "Though you could probably do better";
+} elseif($rating >= 2 && $rating < 2.5) {
+    return "It's not great though";
+} elseif($rating >= 1.5 && $rating < 2) {
+    return "Though you might want to look again";
+} elseif($rating >= 1 && $rating < 1.5) {
+    return "Though it might be an actively unenjoyable experience";
+} elseif($rating >= .5 && $rating < 1) {
+    return "Though, honestly, if Yelp is to be believed, this place sucks";
+} else {
+    return "Don't go here. I didn't even think it was possible to for something to be rated this low on Yelp";
+}
+
 $options = getopt("", $longopts);
 $term = $options['term'] ?: '';
 $location = $options['location'] ?: '';
